@@ -1,0 +1,10 @@
+{
+  "name": "GymDigi — Antrenör & Fitness Platformu",
+  "short_name": "GymDigi",
+  "description": "Türkiye'nin en iyi fitness antrenörlerinin programlarına ve antrenmanlarına abone ol.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait"
+}
