@@ -4,29 +4,25 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Plus,
-  Video,
-  Image as ImageIcon,
-  FileText,
   Trash2,
-  Sparkles,
   Smartphone,
   Eye,
-  CheckCircle2,
   CheckSquare,
   Square,
+  Sparkles,
 } from "lucide-react";
 
 interface SubSectionForm {
   id: string;
-  subTitle: string; // "Isınma", "Ana Blok", "Finisher"
-  badge: string; // "5 Dk", "A1/B1"
+  subTitle: string;
+  badge: string;
   items: {
     id: string;
     itemTitle: string;
     mediaType: "video" | "image" | "none";
     mediaUrl: string;
     description: string;
-    hasSets: boolean; // Set/Tekrar/Dinlenme alanı aktif mi?
+    hasSets: boolean;
     sets: number;
     reps: string;
     restSeconds: number;
@@ -51,7 +47,7 @@ export default function MobileCreatorStudioPage() {
           mediaType: "video",
           mediaUrl: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&auto=format&fit=crop&q=80",
           description: "Direnç bandını gövdeye yapıştır, dışa doğru 15 yavaş tekrar yap. Omuz eklemini hazırla.",
-          hasSets: false, // Isınmada set takibine gerek yok (disable)
+          hasSets: false,
           sets: 2,
           reps: "15 Tekrar",
           restSeconds: 30,
@@ -69,7 +65,7 @@ export default function MobileCreatorStudioPage() {
           mediaType: "video",
           mediaUrl: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&auto=format&fit=crop&q=80",
           description: "Dikey telefon çekimi: Dirsekleri 45 derece açıda tut, tepe noktada göğsü sık.",
-          hasSets: true, // Ana harekette set takibi açık
+          hasSets: true,
           sets: 4,
           reps: "8-10 Tekrar",
           restSeconds: 90,
@@ -150,61 +146,61 @@ export default function MobileCreatorStudioPage() {
 
   return (
     <div className="px-4 py-6 max-w-xl mx-auto space-y-6">
-      {/* Üst Başlık */}
-      <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-5 space-y-3">
+      {/* Üst Başlık: Marshmallow Pure zemin + Galactic Violet başlık */}
+      <div className="rounded-3xl border border-marshmallow-border bg-marshmallow-pure p-5 space-y-3 shadow-xs">
         <div className="flex items-center justify-between">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon border border-neon/30">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-bubblegum/15 px-3 py-1 text-xs font-bold text-bubblegum border border-bubblegum/25">
             <Smartphone className="h-3.5 w-3.5" />
             <span>Telefon Uyumlu Playbook Stüdyosu</span>
           </div>
           <Link
             href="/playbook-feed"
-            className="flex items-center gap-1 rounded-xl bg-zinc-900 border border-zinc-700 px-3 py-1.5 text-xs font-bold text-white hover:border-indigo-500"
+            className="flex items-center gap-1 rounded-xl bg-galactic hover:bg-galactic-dark px-3 py-1.5 text-xs font-bold text-white transition shadow-xs"
           >
             <Eye className="h-3.5 w-3.5" />
             <span>Önizle</span>
           </Link>
         </div>
 
-        <h1 className="text-xl font-black text-white">
+        <h1 className="text-xl font-black text-text-primary">
           Dikey Video & Günlük Antrenman Editörü
         </h1>
-        <p className="text-xs text-zinc-400 leading-relaxed">
+        <p className="text-xs text-text-secondary leading-relaxed">
           Gün, Ana Başlık, Isınma ve Egzersiz alt başlıklarıyla telefonla çektiğiniz videoları yükleyin. Set/tekrar kutucuklarını isteğe bağlı açıp kapatabilirsiniz.
         </p>
       </div>
 
       {/* 1. GÜN VE ANA BAŞLIK AYARLARI */}
-      <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-5 space-y-4">
-        <div className="text-xs font-black uppercase tracking-wider text-indigo-400">
+      <div className="rounded-3xl border border-marshmallow-border bg-marshmallow-pure p-5 space-y-4 shadow-xs">
+        <div className="text-xs font-black uppercase tracking-wider text-galactic">
           1. Gün ve Ana Başlık
         </div>
 
         <div className="grid grid-cols-3 gap-2">
           <div className="col-span-1">
-            <label className="block text-[11px] font-bold text-zinc-400 mb-1">Gün No</label>
+            <label className="block text-[11px] font-bold text-text-secondary mb-1">Gün No</label>
             <input
               type="text"
               value={dayLabel}
               onChange={(e) => setDayLabel(e.target.value)}
               placeholder="Gün 1"
-              className="w-full rounded-xl border border-zinc-800 bg-black px-3 py-2 text-xs font-bold text-white focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-xl border border-marshmallow-border bg-marshmallow-subtle px-3 py-2 text-xs font-bold text-text-primary focus:border-galactic focus:bg-white focus:outline-none"
             />
           </div>
           <div className="col-span-2">
-            <label className="block text-[11px] font-bold text-zinc-400 mb-1">Ana Başlık</label>
+            <label className="block text-[11px] font-bold text-text-secondary mb-1">Ana Başlık</label>
             <input
               type="text"
               value={mainTitle}
               onChange={(e) => setMainTitle(e.target.value)}
               placeholder="Örn: İtiş Günü (Göğüs & Omuz)"
-              className="w-full rounded-xl border border-zinc-800 bg-black px-3 py-2 text-xs font-bold text-white focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-xl border border-marshmallow-border bg-marshmallow-subtle px-3 py-2 text-xs font-bold text-text-primary focus:border-galactic focus:bg-white focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-[11px] font-bold text-zinc-400 mb-1">
+          <label className="block text-[11px] font-bold text-text-secondary mb-1">
             Antrenör Notu / Günün Özeti (Yazı)
           </label>
           <textarea
@@ -212,7 +208,7 @@ export default function MobileCreatorStudioPage() {
             value={coachNote}
             onChange={(e) => setCoachNote(e.target.value)}
             placeholder="Bugün sporcularına iletmek istediğin motivasyon veya teknik kural..."
-            className="w-full rounded-xl border border-zinc-800 bg-black p-3 text-xs text-white placeholder-zinc-500 focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-xl border border-marshmallow-border bg-marshmallow-subtle p-3 text-xs text-text-primary placeholder-text-muted focus:border-galactic focus:bg-white focus:outline-none"
           />
         </div>
       </div>
@@ -220,13 +216,13 @@ export default function MobileCreatorStudioPage() {
       {/* 2. ALT BAŞLIKLAR VE DİKEY İÇERİK BLOKLARI */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-black uppercase tracking-wider text-zinc-300">
+          <span className="text-xs font-black uppercase tracking-wider text-text-primary">
             2. Alt Başlıklar (Isınma, Ana Blok, Finisher)
           </span>
           <button
             type="button"
             onClick={handleAddSection}
-            className="flex items-center gap-1 rounded-xl bg-neon px-3.5 py-1.5 text-xs font-black text-black hover:opacity-90 transition active:scale-95 shadow-md shadow-neon/20 cursor-pointer"
+            className="flex items-center gap-1 rounded-xl bg-galactic hover:bg-galactic-dark px-3.5 py-1.5 text-xs font-black text-white transition active:scale-95 shadow-xs cursor-pointer"
           >
             <Plus className="h-4 w-4 stroke-[3]" />
             <span>Alt Başlık Ekle</span>
@@ -236,10 +232,10 @@ export default function MobileCreatorStudioPage() {
         {sections.map((section, sIdx) => (
           <div
             key={section.id}
-            className="rounded-3xl border border-zinc-800 bg-zinc-950 p-4 space-y-4 shadow-md"
+            className="rounded-3xl border border-marshmallow-border bg-marshmallow-pure p-4 space-y-4 shadow-xs"
           >
             {/* Alt Başlık Düzenleyici & Silme */}
-            <div className="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+            <div className="flex items-center gap-2 border-b border-marshmallow-border pb-3">
               <input
                 type="text"
                 value={section.subTitle}
@@ -251,7 +247,7 @@ export default function MobileCreatorStudioPage() {
                     return copy;
                   });
                 }}
-                className="flex-1 rounded-xl border border-zinc-800 bg-black px-3 py-1.5 text-xs font-extrabold text-white focus:border-indigo-500 focus:outline-none"
+                className="flex-1 rounded-xl border border-marshmallow-border bg-marshmallow-subtle px-3 py-1.5 text-xs font-extrabold text-text-primary focus:border-galactic focus:bg-white focus:outline-none"
               />
               <input
                 type="text"
@@ -265,23 +261,23 @@ export default function MobileCreatorStudioPage() {
                   });
                 }}
                 placeholder="Örn: 5 Dk"
-                className="w-20 rounded-xl border border-zinc-800 bg-black px-2 py-1.5 text-center text-xs text-zinc-400 focus:border-indigo-500 focus:outline-none"
+                className="w-20 rounded-xl border border-marshmallow-border bg-marshmallow-subtle px-2 py-1.5 text-center text-xs text-text-secondary focus:border-galactic focus:bg-white focus:outline-none"
               />
               <button
                 type="button"
                 onClick={(e) => handleRemoveSection(e, sIdx)}
-                className="p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg"
+                className="p-1.5 text-text-muted hover:text-red-500 hover:bg-red-50 rounded-lg transition"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
             </div>
 
-            {/* İçerik Kartları (Dikey Video + Yazı) */}
+            {/* İçerik Kartları */}
             <div className="space-y-3">
               {section.items.map((item, iIdx) => (
                 <div
                   key={item.id}
-                  className="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-3.5 space-y-3"
+                  className="rounded-2xl border border-marshmallow-border bg-marshmallow-subtle p-3.5 space-y-3"
                 >
                   <div className="flex items-center justify-between">
                     <input
@@ -296,12 +292,12 @@ export default function MobileCreatorStudioPage() {
                         });
                       }}
                       placeholder="Hareket Adı (örn: Incline DB Press veya Isınma)"
-                      className="flex-1 rounded-lg border border-zinc-800 bg-black px-3 py-1 text-xs font-bold text-white mr-2"
+                      className="flex-1 rounded-lg border border-marshmallow-border bg-white px-3 py-1 text-xs font-bold text-text-primary mr-2 focus:border-galactic focus:outline-none"
                     />
                     <button
                       type="button"
                       onClick={(e) => handleRemoveItem(e, sIdx, iIdx)}
-                      className="rounded-lg p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-500/10"
+                      className="rounded-lg p-1.5 text-text-muted hover:text-red-500 hover:bg-red-50"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -310,7 +306,7 @@ export default function MobileCreatorStudioPage() {
                   {/* Medya Tipi Seçimi */}
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <label className="block text-[10px] text-zinc-500 mb-1">Medya Tipi</label>
+                      <label className="block text-[10px] text-text-muted mb-1 font-bold">Medya Tipi</label>
                       <select
                         value={item.mediaType}
                         onChange={(e) => {
@@ -321,7 +317,7 @@ export default function MobileCreatorStudioPage() {
                             return copy;
                           });
                         }}
-                        className="w-full rounded-lg border border-zinc-800 bg-black px-2 py-1.5 text-xs text-white"
+                        className="w-full rounded-lg border border-marshmallow-border bg-white px-2 py-1.5 text-xs text-text-primary"
                       >
                         <option value="video">Dikey Video (9:16)</option>
                         <option value="image">Teknik Fotoğraf</option>
@@ -330,7 +326,7 @@ export default function MobileCreatorStudioPage() {
                     </div>
 
                     <div>
-                      <label className="block text-[10px] text-zinc-500 mb-1">Video Linki / Fotoğraf URL</label>
+                      <label className="block text-[10px] text-text-muted mb-1 font-bold">Video / Fotoğraf Linki</label>
                       <input
                         type="text"
                         value={item.mediaUrl}
@@ -343,14 +339,14 @@ export default function MobileCreatorStudioPage() {
                           });
                         }}
                         placeholder="YouTube veya görsel URL'si"
-                        className="w-full rounded-lg border border-zinc-800 bg-black px-2.5 py-1.5 text-xs text-zinc-300"
+                        className="w-full rounded-lg border border-marshmallow-border bg-white px-2.5 py-1.5 text-xs text-text-primary focus:border-galactic focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* Alt Yazı & Açıklama */}
                   <div>
-                    <label className="block text-[10px] text-zinc-500 mb-1">
+                    <label className="block text-[10px] text-text-muted mb-1 font-bold">
                       Alt Yazı / Koç İpucu Metni
                     </label>
                     <textarea
@@ -365,33 +361,33 @@ export default function MobileCreatorStudioPage() {
                         });
                       }}
                       placeholder="Bu hareketin altındaki detaylı yazı ve form kuralı..."
-                      className="w-full rounded-xl border border-zinc-800 bg-black p-2.5 text-xs text-white"
+                      className="w-full rounded-xl border border-marshmallow-border bg-white p-2.5 text-xs text-text-primary focus:border-galactic focus:outline-none"
                     />
                   </div>
 
-                  {/* SET / TEKRAR / DİNLENME TOGGLE (AÇ / KAPAT / DISABLE) */}
-                  <div className="border-t border-zinc-800/80 pt-2 space-y-2">
+                  {/* SET / TEKRAR TOGGLE (DISABLE / ENABLE) */}
+                  <div className="border-t border-marshmallow-border pt-2 space-y-2">
                     <button
                       type="button"
                       onClick={() => handleToggleHasSets(sIdx, iIdx)}
-                      className="flex items-center gap-2 text-xs font-semibold text-zinc-300 hover:text-white"
+                      className="flex items-center gap-2 text-xs font-bold text-text-primary hover:text-galactic cursor-pointer"
                     >
                       {item.hasSets ? (
-                        <CheckSquare className="h-4 w-4 text-neon" />
+                        <CheckSquare className="h-4 w-4 text-bubblegum" />
                       ) : (
-                        <Square className="h-4 w-4 text-zinc-600" />
+                        <Square className="h-4 w-4 text-text-muted" />
                       )}
                       <span>Set, Tekrar ve Dinlenme Takibi Ekle</span>
                       {!item.hasSets && (
-                        <span className="text-[10px] text-zinc-500 font-normal">
-                          (Kapalı: Sadece video ve açıklama gösterilir)
+                        <span className="text-[10px] text-text-muted font-normal">
+                          (Kapalı: Sadece video ve açıklama)
                         </span>
                       )}
                     </button>
 
                     {item.hasSets ? (
-                      <div className="flex items-center gap-2 pt-1 bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-800">
-                        <div className="flex items-center gap-1 text-xs text-zinc-400">
+                      <div className="flex items-center gap-2 pt-1 bg-white p-2.5 rounded-xl border border-marshmallow-border">
+                        <div className="flex items-center gap-1 text-xs text-text-secondary">
                           <span>Set:</span>
                           <input
                             type="number"
@@ -404,10 +400,10 @@ export default function MobileCreatorStudioPage() {
                                 return copy;
                               });
                             }}
-                            className="w-12 rounded-lg border border-zinc-800 bg-black py-1 text-center text-xs text-white font-bold"
+                            className="w-12 rounded-lg border border-marshmallow-border bg-marshmallow-subtle py-1 text-center text-xs text-text-primary font-bold"
                           />
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-zinc-400">
+                        <div className="flex items-center gap-1 text-xs text-text-secondary">
                           <span>Tekrar:</span>
                           <input
                             type="text"
@@ -420,10 +416,10 @@ export default function MobileCreatorStudioPage() {
                                 return copy;
                               });
                             }}
-                            className="w-20 rounded-lg border border-zinc-800 bg-black py-1 text-center text-xs text-white"
+                            className="w-20 rounded-lg border border-marshmallow-border bg-marshmallow-subtle py-1 text-center text-xs text-text-primary"
                           />
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-zinc-400">
+                        <div className="flex items-center gap-1 text-xs text-text-secondary">
                           <span>Dinlenme:</span>
                           <input
                             type="number"
@@ -436,14 +432,14 @@ export default function MobileCreatorStudioPage() {
                                 return copy;
                               });
                             }}
-                            className="w-14 rounded-lg border border-zinc-800 bg-black py-1 text-center text-xs text-white"
+                            className="w-14 rounded-lg border border-marshmallow-border bg-marshmallow-subtle py-1 text-center text-xs text-text-primary"
                           />
                           <span className="text-[10px]">sn</span>
                         </div>
                       </div>
                     ) : (
-                      <div className="rounded-xl bg-black/40 border border-zinc-900 px-3 py-2 text-[11px] text-zinc-500 italic">
-                        Set kutucukları devre dışı bırakıldı. Sporcu sadece videoyu izleyip açıklamayı okuyacaktır (ısınma, esneme ve genel notlar için ideal).
+                      <div className="rounded-xl bg-marshmallow-pure border border-marshmallow-border px-3 py-2 text-[11px] text-text-muted italic">
+                        Set kutucukları kapalı. Sporcu sadece videoyu izleyip açıklamayı okuyacaktır.
                       </div>
                     )}
                   </div>
@@ -453,7 +449,7 @@ export default function MobileCreatorStudioPage() {
               <button
                 type="button"
                 onClick={(e) => handleAddItem(e, sIdx)}
-                className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-zinc-700 bg-zinc-900/60 py-3 text-xs font-bold text-indigo-400 hover:border-indigo-400 hover:text-white transition cursor-pointer active:scale-98"
+                className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-galactic/30 bg-galactic/5 py-3 text-xs font-bold text-galactic hover:bg-galactic/10 transition cursor-pointer active:scale-98"
               >
                 <Plus className="h-4 w-4" />
                 <span>Bu Alt Başlığa Dikey Video/Fotoğraf & Yazı Ekle</span>
@@ -463,7 +459,7 @@ export default function MobileCreatorStudioPage() {
         ))}
       </div>
 
-      {/* 3. YAYINLA & KAYDET BUTONU */}
+      {/* 3. YAYINLA BUTONU */}
       <div className="space-y-3 pt-2">
         <button
           type="button"
@@ -471,13 +467,13 @@ export default function MobileCreatorStudioPage() {
             setSavedBanner(true);
             setTimeout(() => setSavedBanner(false), 3000);
           }}
-          className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 py-3.5 text-xs font-black text-white shadow-lg shadow-indigo-600/30 hover:opacity-95 transition cursor-pointer"
+          className="w-full rounded-2xl bg-gradient-to-r from-galactic to-bubblegum py-3.5 text-xs font-black text-white shadow-md shadow-galactic/20 hover:opacity-95 transition cursor-pointer"
         >
           {dayLabel} Antrenmanını Playbook Formatında Yayınla
         </button>
 
         {savedBanner && (
-          <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/15 p-3.5 text-xs font-bold text-emerald-300 text-center">
+          <div className="rounded-2xl border border-galactic/30 bg-galactic/10 p-3.5 text-xs font-bold text-galactic text-center">
             ✓ Antrenman başarıyla kaydedildi! Sporcularınız bu günü dikey videolar ve altındaki açıklamalarla görüntüleyebilir.
           </div>
         )}

@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="dark">
-      <body className="min-h-screen bg-black text-zinc-100 pb-20 md:pb-10 antialiased">
+    <html lang="tr">
+      <body className="min-h-screen bg-marshmallow text-text-primary pb-20 md:pb-10 antialiased selection:bg-bubblegum/20 selection:text-galactic">
         <AuthProvider>
           <Navbar />
           <main className="mx-auto max-w-5xl">{children}</main>
